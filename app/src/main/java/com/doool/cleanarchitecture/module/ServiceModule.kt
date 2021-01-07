@@ -12,5 +12,5 @@ import retrofit2.Retrofit
 class ServiceModule {
 
     @Provides
-    fun providePublicApiService(retrofit: Retrofit) = retrofit.create(PublicApiService::class.java)
+    fun providePublicApiService(retrofit: Retrofit): PublicApiService = retrofit.create(PublicApiService::class.java)
 }

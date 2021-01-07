@@ -14,9 +14,10 @@ open class BaseRepository {
 
     private fun parseError(throwable: Throwable): ErrorModel {
         return try {
-            val errorJson = (throwable as HttpException).response()?.errorBody()?.string()
-            val errorDetail = JsonParser().parse(errorJson).asJsonObject["detail"].toString()
-            ErrorModel(-1, errorDetail)
+            (throwable as HttpException).run{
+                val errorJson = response()?.errorBody()?.string()
+                ErrorModel(code(), errorJson.toString())
+            }
         } catch (throwable: Throwable) {
             createUnknownError()
         }
@@ -30,12 +31,8 @@ open class BaseRepository {
         }
     }
 
-    suspend fun requestNoResponseApi(api: suspend () -> Unit): Result<Unit> {
-        return withTryCatch { api() }
-    }
-
-    suspend fun <M : Model, EM : Entity> requestApi(
-        mapping: EntityMapper<M, EM>,
+    suspend fun <EM : Entity, M : Model> requestApi(
+        mapping: EntityMapper<EM, M>,
         api: suspend () -> EM
     ): Result<M> {
         return withTryCatch { mapping.mapToModel(api()) }

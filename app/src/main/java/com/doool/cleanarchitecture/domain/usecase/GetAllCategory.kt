@@ -5,9 +5,24 @@ import com.doool.cleanarchitecture.domain.repository.PublicApiRepository
 import javax.inject.Inject
 
 class GetAllCategory @Inject constructor(private val publicApiRepository: PublicApiRepository) :
-    BaseUseCase<List<String>>() {
+    BaseParamUseCase<List<String>, GetAllCategory.Params>() {
 
-    override suspend fun run(): Result<List<String>> {
-        return publicApiRepository.getAllCategories()
+    enum class Sort {
+        ASC, DESC
+    }
+
+    data class Params(val sort: Sort = Sort.ASC)
+
+    override suspend fun run(params: Params): Result<List<String>> {
+        return when (val result = publicApiRepository.getAllCategories()) {
+            is Result.Success -> {
+                if (params.sort == Sort.ASC) {
+                    Result.Success(result.data.sorted())
+                } else {
+                    Result.Success(result.data.sortedDescending())
+                }
+            }
+            is Result.Fail -> result
+        }
     }
 }

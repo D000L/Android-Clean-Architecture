@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="2dp"
+        tools:context=".MainActivity">
+
+        <!--  val api: String,
+          val description: String,
+          val auth: String,
+          val https: Boolean,
+          val cors: String,
+          val link: String,
+          val category: String-->
+
+        <TextView
+            android:id="@+id/api_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cat"
+            android:textColor="#595656"
+            android:textSize="13dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/api_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Cat Facts"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/api_category" />
+
+        <TextView
+            android:id="@+id/api_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="Daily cat facts"
+            android:textSize="13dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/api_name" />
+
+
+        <TextView
+            android:id="@+id/api_auth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Auth : apiKey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/api_https" />
+
+        <TextView
+            android:id="@+id/api_https"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Https : OK"
+            android:layout_marginEnd="6dp"
+            app:layout_constraintEnd_toStartOf="@id/api_cors"
+            app:layout_constraintTop_toBottomOf="@id/api_category" />
+
+        <TextView
+            android:id="@+id/api_link"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hello World!"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/api_description" />
+
+
+        <TextView
+            android:id="@+id/api_cors"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="cors : Yes"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/api_category" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
