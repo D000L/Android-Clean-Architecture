@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:name=".CAApplication"
         android:theme="@style/Theme.CleanArchitecture">
-        <activity android:name=".ui.main.MainActivity">
+        <activity android:name=".presentation.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
