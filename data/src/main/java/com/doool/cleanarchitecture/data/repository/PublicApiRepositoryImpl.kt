@@ -9,7 +9,7 @@ import com.doool.cleanarchitecture.domain.model.ServerStatus
 import com.doool.cleanarchitecture.domain.repository.PublicApiRepository
 import javax.inject.Inject
 
-internal class PublicApiRepositoryImpl @Inject constructor(
+class PublicApiRepositoryImpl @Inject constructor(
     private val publicApiService: PublicApiService,
     private val entriesMapper: EntriesMapper,
     private val serverStatusMapper: ServerStatusMapper

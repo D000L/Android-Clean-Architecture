@@ -5,7 +5,7 @@ import com.doool.cleanarchitecture.data.model.ServerStatusEntity
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-internal interface PublicApiService {
+interface PublicApiService {
 
    @GET("/entries")
     suspend fun getEntries(

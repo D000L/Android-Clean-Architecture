@@ -7,7 +7,7 @@ import com.doool.cleanarchitecture.domain.ResultModel
 import com.doool.cleanarchitecture.domain.model.Model
 import retrofit2.HttpException
 
-internal open class BaseRepository {
+open class BaseRepository {
 
     private fun createUnknownError() = ErrorModel(-1, "Unknown Error")
 

@@ -1,4 +1,4 @@
-package com.doool.cleanarchitecture.data.module
+package com.doool.cleanarchitecture.module
 
 import com.doool.cleanarchitecture.data.repository.PublicApiRepositoryImpl
 import com.doool.cleanarchitecture.domain.repository.PublicApiRepository

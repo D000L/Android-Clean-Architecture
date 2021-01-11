@@ -1,4 +1,4 @@
-package com.doool.cleanarchitecture.data.module
+package com.doool.cleanarchitecture.module
 
 import android.util.Log
 import dagger.Module
