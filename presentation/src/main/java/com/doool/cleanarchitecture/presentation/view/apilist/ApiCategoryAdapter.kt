@@ -41,16 +41,6 @@ class ApiCategoryAdapter(private val onClickCategory: (String?) -> Unit) :
     }
 
     override fun getItemCount(): Int = items.size
-
-    private inner class CategoryViewHolder(private val binding: ItemCategoryBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-
-        fun bind(category: String, isSelected: Boolean, onClickCategory: () -> Unit) {
-            with(binding) {
-                categoryContainer.setOnClickListener { onClickCategory() }
-                categoryContainer.isSelected = isSelected
-                categoryTitle.text = category
-            }
-        }
-    }
 }
+
+
