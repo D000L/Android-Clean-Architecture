@@ -28,6 +28,7 @@ class ApiListViewModel @ViewModelInject constructor(
 
     fun setCategory(category: String?) {
         this.category = category
+        loadAllApi()
     }
 
     fun loadCategory() {
@@ -35,7 +36,7 @@ class ApiListViewModel @ViewModelInject constructor(
             getAllCategory(GetAllCategory.Params(GetAllCategory.Sort.ASC)).collect {
                 when (it) {
                     is ResultModel.Success -> {
-                        _categoryList.postValue(it.data)
+                        _categoryList.postValue(listOf("All") + it.data)
                     }
                     is ResultModel.Fail -> {
 

@@ -1,4 +1,4 @@
-package com.doool.cleanarchitecture.presentation.main
+package com.doool.cleanarchitecture.presentation.view.start
 
 import android.os.Bundle
 import android.view.View
@@ -28,7 +28,7 @@ class StartFragment : BaseFragment<FragmentStartBinding>(R.layout.fragment_start
             serverOn.observe(viewLifecycleOwner) {
                 dataBinding.startServerState.text = if (it) "Server On" else "Server Off"
                 if (it) {
-                    findNavController().navigate(StartFragmentDirections.actionStartFragmentToListFragment())
+                    findNavController().navigate(StartFragmentDirections.actionStartFragmentToApiListFragment())
                 } else {
                     activity?.finish()
                 }

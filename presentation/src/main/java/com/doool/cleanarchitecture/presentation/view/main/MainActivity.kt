@@ -1,4 +1,4 @@
-package com.doool.cleanarchitecture.presentation.main
+package com.doool.cleanarchitecture.presentation.view.main
 
 import com.doool.cleanarchitecture.presentation.R
 import com.doool.cleanarchitecture.presentation.base.BaseActivity

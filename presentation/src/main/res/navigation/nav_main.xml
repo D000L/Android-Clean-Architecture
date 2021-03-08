@@ -5,7 +5,7 @@
     app:startDestination="@id/startFragment">
     <fragment
         android:id="@+id/startFragment"
-        android:name="com.doool.cleanarchitecture.presentation.main.StartFragment"
+        android:name="com.doool.cleanarchitecture.presentation.view.start.StartFragment"
         android:label="StartFragment" >
         <action
             android:id="@+id/action_startFragment_to_apiListFragment"
@@ -13,6 +13,6 @@
     </fragment>
     <fragment
         android:id="@+id/apiListFragment"
-        android:name="com.doool.cleanarchitecture.presentation.main.ApiListFragment"
+        android:name="com.doool.cleanarchitecture.presentation.view.apilist.ApiListFragment"
         android:label="ApiListFragment" />
 </navigation>

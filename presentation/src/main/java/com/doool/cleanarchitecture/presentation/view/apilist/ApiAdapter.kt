@@ -1,4 +1,4 @@
-package com.doool.cleanarchitecture.presentation.main
+package com.doool.cleanarchitecture.presentation.view.apilist
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,7 +7,7 @@ import com.doool.cleanarchitecture.presentation.R
 import com.doool.cleanarchitecture.presentation.databinding.ItemApiBinding
 import com.doool.cleanarchitecture.presentation.model.EntryItem
 
-class ApiListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ApiAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val items: MutableList<EntryItem> = mutableListOf()
 
