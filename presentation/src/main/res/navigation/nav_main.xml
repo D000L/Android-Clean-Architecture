@@ -8,11 +8,11 @@
         android:name="com.doool.cleanarchitecture.presentation.main.StartFragment"
         android:label="StartFragment" >
         <action
-            android:id="@+id/action_startFragment_to_listFragment"
-            app:destination="@id/listFragment" />
+            android:id="@+id/action_startFragment_to_apiListFragment"
+            app:destination="@id/apiListFragment" />
     </fragment>
     <fragment
-        android:id="@+id/listFragment"
-        android:name="com.doool.cleanarchitecture.presentation.main.ListFragment"
-        android:label="ListFragment" />
+        android:id="@+id/apiListFragment"
+        android:name="com.doool.cleanarchitecture.presentation.main.ApiListFragment"
+        android:label="ApiListFragment" />
 </navigation>

@@ -17,7 +17,7 @@ class PublicApiRepositoryImpl @Inject constructor(
 
     override suspend fun getEntries(
         title: String?,
-        password: String?,
+        description: String?,
         auth: String?,
         https: Boolean?,
         cors: String?,
@@ -26,7 +26,7 @@ class PublicApiRepositoryImpl @Inject constructor(
         return requestApi(entriesMapper) {
             publicApiService.getEntries(
                 title,
-                password,
+                description,
                 auth,
                 https,
                 cors,
@@ -37,7 +37,7 @@ class PublicApiRepositoryImpl @Inject constructor(
 
     override suspend fun getRandomEntry(
         title: String?,
-        password: String?,
+        description: String?,
         auth: String?,
         https: Boolean?,
         cors: String?,
@@ -46,7 +46,7 @@ class PublicApiRepositoryImpl @Inject constructor(
         return requestApi(entriesMapper) {
             publicApiService.getRandomEntry(
                 title,
-                password,
+                description,
                 auth,
                 https,
                 cors,

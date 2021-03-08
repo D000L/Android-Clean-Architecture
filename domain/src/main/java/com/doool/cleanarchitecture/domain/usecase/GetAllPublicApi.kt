@@ -10,7 +10,7 @@ class GetAllPublicApi @Inject constructor(private val publicApiRepository: Publi
 
     data class Params(
         val title: String? = null,
-        val password: String? = null,
+        val description: String? = null,
         val auth: String? = null,
         val https: Boolean? = null,
         val cors: String? = null,
@@ -20,7 +20,7 @@ class GetAllPublicApi @Inject constructor(private val publicApiRepository: Publi
     override suspend fun run(params: Params): ResultModel<Entries> {
         return publicApiRepository.getEntries(
             params.title,
-            params.password,
+            params.description,
             params.auth,
             params.https,
             params.cors,

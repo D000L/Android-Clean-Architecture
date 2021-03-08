@@ -12,7 +12,7 @@ import com.doool.cleanarchitecture.presentation.model.EntryItem
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
-class MainViewModel @ViewModelInject constructor(
+class ApiListViewModel @ViewModelInject constructor(
     private val getAllCategory: GetAllCategory,
     private val getAllPublicApi: GetAllPublicApi,
     private val entriesMapper: EntryMapper
@@ -23,6 +23,12 @@ class MainViewModel @ViewModelInject constructor(
 
     private val _apiList: MutableLiveData<List<EntryItem>> = MutableLiveData()
     val apiList: MutableLiveData<List<EntryItem>> get() = _apiList
+
+    private var category: String? = null
+
+    fun setCategory(category: String?) {
+        this.category = category
+    }
 
     fun loadCategory() {
         viewModelScope.launch {
@@ -41,7 +47,7 @@ class MainViewModel @ViewModelInject constructor(
 
     fun loadAllApi() {
         viewModelScope.launch {
-            getAllPublicApi(GetAllPublicApi.Params()).collectResult(
+            getAllPublicApi(GetAllPublicApi.Params(category = category)).collectResult(
                 onSuccess = {
                     _apiList.postValue(it.entries.map { entriesMapper.mapToItem(it) })
                 },

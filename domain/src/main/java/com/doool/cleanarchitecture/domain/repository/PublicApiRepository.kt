@@ -8,7 +8,7 @@ interface PublicApiRepository {
 
     suspend fun getEntries(
         title: String? = null,
-        password: String? = null,
+        description: String? = null,
         auth: String? = null,
         https: Boolean? = null,
         cors: String? = null,
@@ -17,7 +17,7 @@ interface PublicApiRepository {
 
     suspend fun getRandomEntry(
         title: String? = null,
-        password: String? = null,
+        description: String? = null,
         auth: String? = null,
         https: Boolean? = null,
         cors: String? = null,

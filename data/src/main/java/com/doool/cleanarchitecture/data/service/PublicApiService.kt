@@ -10,7 +10,7 @@ interface PublicApiService {
    @GET("/entries")
     suspend fun getEntries(
        @Query("title") title: String? = null,
-       @Query("description") password: String? = null,
+       @Query("description") description: String? = null,
        @Query("auth") auth: String? = null,
        @Query("https") https: Boolean? = null,
        @Query("cors") cors: String? = null,
@@ -20,7 +20,7 @@ interface PublicApiService {
     @GET("/random")
     suspend fun getRandomEntry(
         @Query("title") title: String? = null,
-        @Query("description") password: String? = null,
+        @Query("description") description: String? = null,
         @Query("auth") auth: String? = null,
         @Query("https") https: Boolean? = null,
         @Query("cors") cors: String? = null,
