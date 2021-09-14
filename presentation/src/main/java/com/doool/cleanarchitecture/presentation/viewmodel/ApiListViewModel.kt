@@ -1,6 +1,5 @@
 package com.doool.cleanarchitecture.presentation.viewmodel
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.doool.cleanarchitecture.domain.ResultModel
@@ -9,10 +8,13 @@ import com.doool.cleanarchitecture.domain.usecase.GetAllPublicApi
 import com.doool.cleanarchitecture.presentation.base.BaseViewModel
 import com.doool.cleanarchitecture.presentation.mapper.EntryMapper
 import com.doool.cleanarchitecture.presentation.model.EntryItem
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class ApiListViewModel @ViewModelInject constructor(
+@HiltViewModel
+class ApiListViewModel @Inject constructor(
     private val getAllCategory: GetAllCategory,
     private val getAllPublicApi: GetAllPublicApi,
     private val entriesMapper: EntryMapper
