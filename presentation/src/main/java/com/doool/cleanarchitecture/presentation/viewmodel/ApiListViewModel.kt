@@ -28,6 +28,10 @@ class ApiListViewModel @Inject constructor(
 
     private var category: String? = null
 
+    init {
+     loadAllApi()
+    }
+
     fun setCategory(category: String?) {
         this.category = category
         loadAllApi()
