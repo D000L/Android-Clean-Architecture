@@ -1,4 +1,4 @@
-package com.doool.cleanarchitecture.presentation.screen.apiScreen
+package com.doool.cleanarchitecture.presentation.ui.api
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -6,9 +6,11 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Divider
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.ExitToApp
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
@@ -19,15 +21,23 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.doool.cleanarchitecture.presentation.model.EntryItem
 import com.doool.cleanarchitecture.presentation.ui.theme.CleanArchitectureTheme
-import com.doool.cleanarchitecture.presentation.viewmodel.ApiListViewModel
 import com.google.accompanist.flowlayout.FlowRow
 
 @Composable
-fun ApiScreen(apiListViewModel: ApiListViewModel) {
+fun ApiScreen(viewModel: ApiViewModel, navigateBack : () -> Unit) {
 
-    val apiList by apiListViewModel.apiList.observeAsState(emptyList())
+    val category = viewModel.category
+    val apiList by viewModel.apiList.observeAsState(emptyList())
 
-    ApiList(apiList = apiList)
+    Column {
+        Row {
+            IconButton(onClick = navigateBack) {
+                Icon(imageVector = Icons.Default.ArrowBack, contentDescription = null)
+            }
+            Text(text = category ?: "")
+        }
+        ApiList(apiList = apiList)
+    }
 }
 
 @Composable

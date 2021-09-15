@@ -1,4 +1,4 @@
-package com.doool.cleanarchitecture.presentation.screen.apiScreen
+package com.doool.cleanarchitecture.presentation.ui.api
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
@@ -15,19 +15,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.doool.cleanarchitecture.presentation.viewmodel.ApiListViewModel
+import com.doool.cleanarchitecture.presentation.ui.category.CategoryViewModel
 
 @Composable
-fun CategoryScreen(apiListViewModel: ApiListViewModel) {
+fun CategoryScreen(viewModel: CategoryViewModel, navigateApiList: (String) -> Unit) {
 
-    val categoryList by apiListViewModel.categoryList.observeAsState(emptyList())
+    val categoryList by viewModel.categoryList.observeAsState(emptyList())
 
-    CategoryGrid(categoryList = categoryList,apiListViewModel::setCategory)
+    CategoryGrid(categoryList = categoryList, navigateApiList)
 }
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun CategoryGrid(categoryList: List<String>, onClick: (String)->Unit) {
+fun CategoryGrid(categoryList: List<String>, onClick: (String) -> Unit) {
     BoxWithConstraints {
         val cellCount = 3
         val cellSpacing = 6.dp
@@ -58,7 +58,9 @@ fun CategoryGrid(categoryList: List<String>, onClick: (String)->Unit) {
 
 @Composable
 fun Category(modifier: Modifier = Modifier, category: String, onClick: () -> Unit) {
-    Box(modifier = modifier.background(Color.Blue).clickable { onClick() }) {
+    Box(modifier = modifier
+        .background(Color.Blue)
+        .clickable { onClick() }) {
         Text(modifier = Modifier.align(Alignment.Center), text = category)
     }
 }
@@ -85,6 +87,6 @@ fun PreviewCategoryList() {
             "Category",
             "Category",
             "Category"
-        ),onClick = {}
+        ), onClick = {}
     )
 }
