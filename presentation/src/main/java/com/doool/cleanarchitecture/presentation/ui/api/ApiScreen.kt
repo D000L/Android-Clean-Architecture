@@ -6,11 +6,10 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.Close
-import androidx.compose.material.icons.filled.ExitToApp
+import androidx.compose.material.Divider
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
@@ -20,22 +19,19 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.doool.cleanarchitecture.presentation.model.EntryItem
+import com.doool.cleanarchitecture.presentation.ui.common.AppBar
 import com.doool.cleanarchitecture.presentation.ui.theme.CleanArchitectureTheme
 import com.google.accompanist.flowlayout.FlowRow
 
 @Composable
-fun ApiScreen(viewModel: ApiViewModel, navigateBack : () -> Unit) {
+fun ApiScreen(viewModel: ApiViewModel, navigateBack: () -> Unit) {
 
-    val category = viewModel.category
+    val category = viewModel.category ?: ""
     val apiList by viewModel.apiList.observeAsState(emptyList())
 
-    Column {
-        Row {
-            IconButton(onClick = navigateBack) {
-                Icon(imageVector = Icons.Default.ArrowBack, contentDescription = null)
-            }
-            Text(text = category ?: "")
-        }
+    Scaffold(topBar = {
+        AppBar( title =category,onBackClick =navigateBack)
+    }) {
         ApiList(apiList = apiList)
     }
 }
