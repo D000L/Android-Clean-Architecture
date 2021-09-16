@@ -11,7 +11,7 @@ import androidx.navigation.compose.navArgument
 import androidx.navigation.compose.rememberNavController
 import com.doool.cleanarchitecture.presentation.ui.api.ApiScreen
 import com.doool.cleanarchitecture.presentation.ui.api.ApiViewModel
-import com.doool.cleanarchitecture.presentation.ui.api.CategoryScreen
+import com.doool.cleanarchitecture.presentation.ui.category.CategoryScreen
 import com.doool.cleanarchitecture.presentation.ui.category.CategoryViewModel
 
 object MainDestinations {
@@ -39,8 +39,12 @@ fun App(
             )
         }
         composable(
-            route = "${MainDestinations.API_LIST_ROUTE}/{${ApiViewModel.CATEGORY_KEY}}",
-            arguments = listOf(navArgument(ApiViewModel.CATEGORY_KEY) { type = NavType.StringType })
+            route = "${MainDestinations.API_LIST_ROUTE}?category={${ApiViewModel.CATEGORY_KEY}}}",
+            arguments = listOf(navArgument(ApiViewModel.CATEGORY_KEY) {
+                type = NavType.StringType
+                nullable = true
+                defaultValue = null
+            })
         ) { backStackEntry ->
             val apiViewModel: ApiViewModel = hiltViewModel(backStackEntry)
 
@@ -55,7 +59,9 @@ fun App(
 class MainActions(private val navController: NavHostController) {
 
     fun navigateToApiList(category: String?) {
-        navController.navigate("${MainDestinations.API_LIST_ROUTE}/$category")
+        var route = MainDestinations.API_LIST_ROUTE
+        if (category != null) route += "?category=$category}"
+        navController.navigate(route)
     }
 
     fun navigateUp() {

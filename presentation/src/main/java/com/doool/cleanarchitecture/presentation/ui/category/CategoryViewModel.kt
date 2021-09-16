@@ -15,9 +15,12 @@ class CategoryViewModel @Inject constructor(
     private val getAllCategory: GetAllCategory
 ) : BaseViewModel() {
 
+    companion object{
+        const val CATEGORY_ALL = "ALL"
+    }
+
     private val _categoryList: MutableLiveData<List<String>> = MutableLiveData()
     val categoryList: MutableLiveData<List<String>> get() = _categoryList
-
 
     init {
         loadCategory()
@@ -28,7 +31,7 @@ class CategoryViewModel @Inject constructor(
             getAllCategory(GetAllCategory.Params(GetAllCategory.Sort.ASC)).collect {
                 when (it) {
                     is ResultModel.Success -> {
-                        _categoryList.postValue(listOf("All") + it.data)
+                        _categoryList.postValue(listOf(CATEGORY_ALL) + it.data)
                     }
                     is ResultModel.Fail -> {
 

@@ -30,26 +30,26 @@ fun ApiScreen(viewModel: ApiViewModel, navigateBack: () -> Unit) {
     val apiList by viewModel.apiList.observeAsState(emptyList())
 
     Scaffold(topBar = {
-        AppBar( title =category,onBackClick =navigateBack)
+        AppBar(title = category, onBackClick = navigateBack)
     }) {
-        ApiList(apiList = apiList)
+        ApiList(apiList = apiList, showCategory = false)
     }
 }
 
 @Composable
-fun ApiList(apiList: List<EntryItem>) {
+fun ApiList(apiList: List<EntryItem>, showCategory: Boolean = false) {
     LazyColumn(
         modifier = Modifier.background(Color.White),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         items(apiList) {
-            Api(api = it)
+            Api(api = it,showCategory = showCategory)
         }
     }
 }
 
 @Composable
-fun Api(api: EntryItem) {
+fun Api(api: EntryItem, showCategory: Boolean = false) {
     Column {
         Column(
             Modifier
@@ -62,7 +62,7 @@ fun Api(api: EntryItem) {
                 RoundedBoxText(text = api.auth)
                 RoundedBoxText(text = if (api.https) "https" else "http")
                 RoundedBoxText(text = api.cors)
-                RoundedBoxText(text = api.category)
+                if (showCategory) RoundedBoxText(text = api.category)
             }
         }
         Divider(thickness = 0.5.dp, color = Color.Gray)

@@ -1,4 +1,4 @@
-package com.doool.cleanarchitecture.presentation.ui.api
+package com.doool.cleanarchitecture.presentation.ui.category
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
@@ -15,14 +15,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.doool.cleanarchitecture.presentation.ui.category.CategoryViewModel
 
 @Composable
-fun CategoryScreen(viewModel: CategoryViewModel, navigateApiList: (String) -> Unit) {
+fun CategoryScreen(viewModel: CategoryViewModel, navigateApiList: (String?) -> Unit) {
 
     val categoryList by viewModel.categoryList.observeAsState(emptyList())
 
-    CategoryGrid(categoryList = categoryList, navigateApiList)
+    CategoryGrid(categoryList = categoryList) {
+        navigateApiList(if (it == CategoryViewModel.CATEGORY_ALL) null else it)
+    }
 }
 
 @OptIn(ExperimentalFoundationApi::class)
